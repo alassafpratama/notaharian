@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <title>Kasir Modern</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    :root {
+      --primary-color: #2563eb;
+      --bg-color: #f8fafc;
+      --card-bg: #ffffff;
+      --text-main: #1e293b;
+      --border-color: #e2e8f0;
+    }
+
+    body { 
+      font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; 
+      background-color: var(--bg-color);
+      color: var(--text-main);
+      margin: 0;
+      padding: 20px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 500px;
+      background: var(--card-bg);
+      padding: 20px;
+      border-radius: 16px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    }
+
+    h3 { 
+      text-align: center; 
+      color: var(--primary-color);
+      margin-bottom: 20px;
+      font-weight: 700;
+    }
+
+    table { 
+      width: 100%; 
+      border-collapse: collapse; 
+      margin-bottom: 20px;
+    }
+
+    td { 
+      padding: 12px 8px; 
+      border-bottom: 1px solid var(--border-color); 
+    }
+
+    /* Nama Label di Kiri */
+    td:first-child {
+      font-weight: 600;
+      color: #475569;
+      font-size: 14px;
+    }
+
+    /* Input di Kanan */
+    input { 
+      width: 100%; 
+      padding: 10px; 
+      font-size: 16px; 
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      outline: none;
+      box-sizing: border-box;
+      transition: border 0.2s;
+      text-align: right;
+    }
+
+    input:focus {
+      border-color: var(--primary-color);
+      background-color: #eff6ff;
+    }
+
+    .button-group {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    button { 
+      cursor: pointer;
+      padding: 12px; 
+      font-size: 15px;
+      font-weight: bold;
+      border: none;
+      border-radius: 10px;
+      transition: opacity 0.2s;
+    }
+
+    .btn-save { background-color: var(--primary-color); color: white; }
+    .btn-reset { background-color: #ef4444; color: white; }
+    
+    button:active { opacity: 0.8; transform: scale(0.98); }
+
+    .total-container {
+      margin-top: 25px;
+      padding: 15px;
+      background-color: #f1f5f9;
+      border-radius: 12px;
+      text-align: center;
+    }
+
+    #total { 
+      color: #059669; 
+      font-size: 24px; 
+      font-weight: 800;
+      display: block;
+    }
+
+    @media print {
+    body { background: white; padding: 0; }
+    .container { box-shadow: none; border: none; max-width: 100%; }
+    .button-group, .btn-save, .btn-reset, h3 { display: none !important; }
+    .total-container { background-color: #eee !important; border: 1px solid #ccc; }
+    input { border: none; text-align: right; background: none; }
+}
+
+/* Tambahkan sedikit style untuk tombol cetak di mode layar */
+.btn-print {
+    grid-column: span 2; 
+    background-color: #64748b; 
+    color: white; 
+    margin-top: 5px;
+}
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+    <h2 style="margin: 0; color: var(--primary-color);">Pasir Seluler </h2> <div id="waktu-skrg" style="font-size: 12px; text-align: right; color: #64748b;"></div>
+</div>
+  <h3>Kasir Harian</h3>
+  
+  <table>
+    <tr><td>BON</td><td><input type="number" id="BON" placeholder="0"></td></tr>
+    <tr><td>BRIMO</td><td><input type="number" id="BRIMO" placeholder="0"></td></tr>
+    <tr><td>CASH</td><td><input type="number" id="CASH" placeholder="0"></td></tr>
+    <tr><td>DANA</td><td><input type="number" id="DANA" placeholder="0"></td></tr>
+    <tr><td>DOMPUL</td><td><input type="number" id="DOMPUL" placeholder="0"></td></tr>
+    <tr><td>ISIMPLE</td><td><input type="number" id="ISIMPLE" placeholder="0"></td></tr>
+    <tr><td>MKIOS</td><td><input type="number" id="MKIOS" placeholder="0"></td></tr>
+    <tr><td>QRIS</td><td><input type="number" id="QRIS" placeholder="0"></td></tr>
+    <tr><td>RITA</td><td><input type="number" id="RITA" placeholder="0"></td></tr>
+    <tr><td>SALDO</td><td><input type="number" id="SALDO" placeholder="0"></td></tr>
+    <tr><td>SAYUR</td><td><input type="number" id="SAYUR" placeholder="0"></td></tr>
+    <tr><td>VENTURA</td><td><input type="number" id="VENTURA" placeholder="0"></td></tr>
+  </table>
+
+  <div class="total-container">
+    <span>Total Pendapatan:</span>
+    <span id="total">Rp0</span>
+  </div>
+
+  <div class="button-group">
+    <button class="btn-save" onclick="simpan()">Simpan</button>
+    <button class="btn-reset" onclick="resetDatabase()">Reset</button>
+    <button class="btn-print" onclick="window.print()">Cetak Struk</button>
+  </div>
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
